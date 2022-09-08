@@ -240,7 +240,7 @@ btnLoan.addEventListener('click', function (e) {
     currentAccount.movements.push(amount);
 
     // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString())
+    currentAccount.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
@@ -383,3 +383,10 @@ console.log(new Date(1568836200000));
 future.setFullYear(2030);
 console.log(future);
 */
+
+// Calculating diff btw dates
+const calDaysPassed = (date2, date1) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const daysPassed = calDaysPassed(new Date(2019, 8, 18), new Date(2019, 8, 10));
+console.log(daysPassed);
