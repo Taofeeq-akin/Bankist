@@ -155,6 +155,11 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+// fake login to always sta logged in for now
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -248,6 +253,15 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
+// Setting dates
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const min = now.getMinutes();
+const hour = now.getHours();
+const year = now.getFullYear();
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -269,14 +283,14 @@ btnSort.addEventListener('click', function (e) {
 // console.log(Math.sqrt(25));
 // console.log(25 ** (1/2));
 
-// To find cube root 
+// To find cube root
 // console.log(8 ** (1/3));
 
-// we can also look for min and max 
+// we can also look for min and max
 // console.log(Math.max(2,23,51,15))
 // console.log(Math.max(2,23,'51',15)) // did type coersion here
 
-// so we also do random num 
+// so we also do random num
 // console.log(Math.trunc(Math.random() * 6) + 1);
 
 // const randomInt = function (min, max) {
@@ -284,7 +298,7 @@ btnSort.addEventListener('click', function (e) {
 // };
 // console.log(randomInt(5,10));
 
-// const meeeen = (min, max) => 
+// const meeeen = (min, max) =>
 //   Math.trunc(Math.random() * (max -min) + 1) + min;
 
 // console.log(meeeen(10, 20));
@@ -293,7 +307,7 @@ btnSort.addEventListener('click', function (e) {
 Math.trunc;
 Math.floor;
 Math.ceil;
-Math.round; 
+Math.round;
 // console.log(Math.round(2.9));
 // console.log(Math.round(2.3))
 
@@ -317,7 +331,7 @@ console.log(BigInt(345678904))
 
 // console.log(21 + 43n)
 console.log(21n + 43n)
-*/ 
+*/
 
 /*
 // Creating a date
@@ -340,12 +354,16 @@ console.log(new Date (3 * 24 * 60 * 60 * 1000)) //Third day
 console.log(3 * 24 * 60 * 60 * 1000) //TimeStamp
 */
 
+/*
 // working with date
-const future = new Date(2019, 8, 18, 20, 50)
-console.log(future)
+const future = new Date(2019, 8, 18, 20, 50);
+console.log(future);
 console.log(future.getFullYear());
 console.log(future.getMonth());
-console.log(future.getTime()) //timestamp that hae passed since 1970
-console.log(future.toISOString()) // Following internation zone base on the region of the person   // Or to turn it into a string that we can store somwwhere
+console.log(future.getTime()); //timestamp that hae passed since 1970
+console.log(future.toISOString()); // Following internation zone base on the region of the person   // Or to turn it into a string that we can store somwwhere
 
 console.log(new Date(1568836200000));
+future.setFullYear(2030);
+console.log(future);
+*/
