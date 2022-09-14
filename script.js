@@ -90,7 +90,7 @@ const formatMovementDate = function (date) {
 
   if (daysPassed === 0) return 'Today';
   if (daysPassed === 1) return 'Yesterday';
-  if ((daysPassed <= 7)) return `${daysPassed} days ago`;
+  if (daysPassed <= 7) return `${daysPassed} days ago`;
   else {
     const day = `${date.getDate()}`.padStart(2, 0);
     const month = `${date.getMonth() + 1}`.padStart(2, 0);
@@ -178,6 +178,10 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
+
+// Experimenting API in internationalizing Dates
+const now = new Date();
+labelDate.textContent = new Intl.DateTimeFormat('en-NG').format(now);
 
 // fake login to always sta logged in for now
 currentAccount = account1;
