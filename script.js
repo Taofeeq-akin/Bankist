@@ -197,6 +197,26 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+// settting timeout
+const startLogoutTimer = function () {
+  // Set time to 5 minutes
+  let time = 300;
+
+  // Call the timer every seconds
+  setInterval(function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, '0');
+    const sec = String(time % 60).padStart(2, '0');
+
+    // In each cqll, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // Decrease by 1
+    time--;
+
+    // when 0 second stop timer and log out user
+  }, 1000);
+};
+
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
@@ -251,6 +271,9 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    // Timer set 
+    startLogoutTimer()
 
     // Update UI
     updateUI(currentAccount);
@@ -451,7 +474,7 @@ console.log(future);
 // const daysPassed = calDaysPassed(new Date(2019, 8, 18), new Date(2019, 8, 10));
 // console.log(daysPassed);
 
-
+/*
 // Using Timers: we have 2 type of timer
 // 1) setTimeout : will run just once after a defined time
 // 2) setInterval: Runs forever until we stop it
@@ -474,3 +497,4 @@ setInterval(function () {
   const sec = now.getSeconds();
   console.log(`${hour}:${min}:${sec}`);
 }, 1000);
+*/
