@@ -291,15 +291,17 @@ btnLoan.addEventListener('click', function (e) {
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 3000);
+    inputLoanAmount.value = '';
   }
-  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -449,12 +451,16 @@ console.log(future);
 // const daysPassed = calDaysPassed(new Date(2019, 8, 18), new Date(2019, 8, 10));
 // console.log(daysPassed);
 
-// Using Timers: we have 2 type of timer 
+// Using Timers: we have 2 type of timer
 // 1) setTimeout : will run just once after a defined time
 // 2) setInterval: Runs forever until we stop it
 
-const ingredients = ['olives', 'spinach']
-const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`), 3000 ,...ingredients)
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+);
 
-// Can also clkear the timer 
-if (ingredients.includes('olives')) clearTimeout(pizzaTimer)
+// Can also clkear the timer
+if (ingredients.includes('olives')) clearTimeout(pizzaTimer);
