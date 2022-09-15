@@ -451,6 +451,7 @@ console.log(future);
 // const daysPassed = calDaysPassed(new Date(2019, 8, 18), new Date(2019, 8, 10));
 // console.log(daysPassed);
 
+
 // Using Timers: we have 2 type of timer
 // 1) setTimeout : will run just once after a defined time
 // 2) setInterval: Runs forever until we stop it
@@ -464,3 +465,12 @@ const pizzaTimer = setTimeout(
 
 // Can also clkear the timer
 if (ingredients.includes('olives')) clearTimeout(pizzaTimer);
+
+// SetInterval
+setInterval(function () {
+  const now = new Date();
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+  console.log(`${hour}:${min}:${sec}`);
+}, 1000);
