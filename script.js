@@ -200,7 +200,7 @@ const updateUI = function (acc) {
 // settting timeout
 const startLogoutTimer = function () {
   // Set time to 5 minutes
-  let time = 10;
+  let time = 50;
 
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, '0');
@@ -222,12 +222,13 @@ const startLogoutTimer = function () {
   tick();
 
   // Call the timer every seconds
-  setInterval(tick, 1000);
+  const timer = setInterval(tick, 1000);
+  return timer;
 };
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 // fake login to always sta logged in for now
 // currentAccount = account1;
@@ -281,7 +282,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     // Timer set
-    startLogoutTimer();
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
